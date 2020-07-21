@@ -10,10 +10,6 @@ import androidx.databinding.DataBindingUtil
 import com.example.androidarchcomponentsexample.R
 import com.example.androidarchcomponentsexample.databinding.FragmentScoreBinding
 
-
-/**
- * Fragment where the final score is shown, after the game is over
- */
 class ScoreFragment : Fragment() {
 
     private lateinit var binding: FragmentScoreBinding
