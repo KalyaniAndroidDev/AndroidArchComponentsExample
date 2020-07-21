@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 
 import androidx.navigation.fragment.findNavController
 import com.example.androidarchcomponentsexample.R
@@ -44,9 +45,15 @@ class GuessWordGameFragment : Fragment() {
         binding.correctButton.setOnClickListener { onCorrect() }
         binding.skipButton.setOnClickListener { onSkip() }
         binding.endGameButton.setOnClickListener(View.OnClickListener {
-            findNavController().navigate(
+            //using normal safe args navigation and send parameters to another fragment
+           /* findNavController().navigate(
                 GuessWordGameFragmentDirections.actionGameToScore().setScore(viewModel.score)
-            )
+            )*/
+
+            //using viewModel and factory method
+            val action = GuessWordGameFragmentDirections.actionGameToScore()
+            action.score = viewModel.score
+            NavHostFragment.findNavController(this).navigate(action)
         })
         updateScoreText()
         updateWordText()
