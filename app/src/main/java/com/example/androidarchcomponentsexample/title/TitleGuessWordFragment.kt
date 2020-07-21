@@ -26,7 +26,6 @@ class TitleGuessWordFragment : Fragment() {
         binding.playGameButton.setOnClickListener {
             findNavController().navigate(TitleGuessWordFragmentDirections.actionTitleToGame())
         }
-        //Hell
         return binding.root
     }
 }
