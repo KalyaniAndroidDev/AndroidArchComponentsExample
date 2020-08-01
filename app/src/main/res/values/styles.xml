@@ -21,4 +21,29 @@
         <item name="colorControlHighlight">@color/skip_red_color</item>
     </style>
 
+    <style name="LoginButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/eight_dp</item>
+        <item name="android:layout_marginEnd">@dimen/eight_dp</item>
+        <item name="android:layout_marginRight">@dimen/eight_dp</item>
+        <item name="android:layout_marginBottom">@dimen/eight_dp</item>
+        <item name="layout_constraintHorizontal_bias">0.0</item>
+    </style>
+
+    <style name="LoginImageStyle">
+        <item name="android:layout_height">@dimen/login_image_icon_height</item>
+        <item name="android:layout_width">@dimen/login_image_icon_width</item>
+        <item name="android:layout_marginTop">@dimen/eight_dp</item>
+        <item name="android:layout_marginStart">@dimen/eight_dp</item>
+        <item name="android:layout_marginLeft">@dimen/eight_dp</item>
+        <item name="android:layout_marginEnd">@dimen/eight_dp</item>
+        <item name="android:layout_marginRight">@dimen/eight_dp</item>
+        <item name="android:layout_marginBottom">@dimen/eight_dp</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="layout_constraintHorizontal_bias">0.023</item>
+    </style>
+
 </resources>
