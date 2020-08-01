@@ -1,22 +1,24 @@
 package com.example.androidarchcomponentsexample.guesswordgame
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GuessWordGameViewModel : ViewModel() {
+    //MutableLiveData is a LiveData whose value can be changed.
     // The current word
-    var word = ""
-
+    val word = MutableLiveData<String>()
     // The current score
-    var score = 0
+    val score = MutableLiveData<Int>()
 
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>
 
     init {
-        Log.i("GuessWordGameViewModel", "GuessWordGameViewModel created!")
-        resetList()
-        nextWord()
+//        resetList()
+//        nextWord()
+        word.value=""
+        score.value=0
     }
 
     /**
@@ -55,22 +57,21 @@ class GuessWordGameViewModel : ViewModel() {
     private fun nextWord() {
         if (!wordList.isEmpty()) {
             //Select and remove a word from the list
-            word = wordList.removeAt(0)
+            word.value = wordList.removeAt(0)
         }
     }
 
     fun onSkip() {
-        score--
+        score.value= score.value?.minus(1)
         nextWord()
     }
 
     fun onCorrect() {
-        score++
+        score.value=score.value?.plus(1)
         nextWord()
     }
 
     override fun onCleared() {
         super.onCleared()
-        Log.i("GuessWordGameViewModel", "GuessWordGameViewModel created!")
     }
 }

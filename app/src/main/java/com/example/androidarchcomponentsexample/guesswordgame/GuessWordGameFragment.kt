@@ -16,8 +16,6 @@ import com.example.androidarchcomponentsexample.databinding.FragmentGuessWordBin
 
 
 class GuessWordGameFragment : Fragment() {
-
-
     private lateinit var binding: FragmentGuessWordBinding
 
     private lateinit var viewModel: GuessWordGameViewModel
@@ -26,7 +24,6 @@ class GuessWordGameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate view and obtain an instance of the binding class
         binding = DataBindingUtil.inflate(
             inflater,
@@ -34,31 +31,27 @@ class GuessWordGameFragment : Fragment() {
             container,
             false
         )
-
         /*Always use ViewModelProvider to create ViewModel objects rather than
          directly instantiating an instance of ViewModel, because you create the ViewModel instance
           using the ViewModel class, a new object is created every time the fragment is re-created */
         Log.i("GameFragment", "Called ViewModelProviders.of")
         viewModel = ViewModelProviders.of(this).get(GuessWordGameViewModel::class.java)
-
-
         binding.correctButton.setOnClickListener { onCorrect() }
         binding.skipButton.setOnClickListener { onSkip() }
         binding.endGameButton.setOnClickListener(View.OnClickListener {
             //using normal safe args navigation and send parameters to another fragment
-           /* findNavController().navigate(
-                GuessWordGameFragmentDirections.actionGameToScore().setScore(viewModel.score)
-            )*/
+            /* findNavController().navigate(
+                 GuessWordGameFragmentDirections.actionGameToScore().setScore(viewModel.score)
+             )*/
 
             //using viewModel and factory method
             val action = GuessWordGameFragmentDirections.actionGameToScore()
-            action.score = viewModel.score
+            action.score = viewModel.score.value?:0
             NavHostFragment.findNavController(this).navigate(action)
         })
         updateScoreText()
         updateWordText()
         return binding.root
-
     }
 
     private fun onSkip() {
@@ -74,9 +67,8 @@ class GuessWordGameFragment : Fragment() {
     }
 
     /** Methods for updating the UI **/
-
     private fun updateWordText() {
-        binding.wordText.text = viewModel.word
+        binding.wordText.text = viewModel.word.value
     }
 
     private fun updateScoreText() {
